@@ -10,37 +10,37 @@
 <body>
     <center>
         <h2 class="heading">Debouncing & Throtling Visualizer</h2>
-</center>
+    </center>
 
     <div class="search_wrapper">
         <div class="delay-bars">
+
             <div class="dbounce-delay">
-                <h4>Debounce delay</h4>
-                
+                <h4>Debounce delay(3s)</h4>
                 <div class="dbounce-bar-wrapper">
                     <div class="dbounce-bar"></div>
                 </div>
             </div>
 
-        <div class="throttle-delay">
-            <h4>Throttle delay</h4>
-            
-            <div class="throttle-bar-wrapper">
-                <div class="throttle-bar"></div>
+            <div class="throttle-delay">
+                <h4>Throttle delay(3s)</h4>
+                <div class="throttle-bar-wrapper">
+                    <div class="throttle-bar"></div>
+                </div>
             </div>
-        </div>
         
-    </div>
+        </div>
         
         <div class="search_bar">
             <input type="search" placeholder="What you looking today?"/>
-            
-        <button>
-            Search
-        </button>
+            <button class="search-btn">Search</button>
         </div>
         
         <div class="lists"></div>
+    </div>
+
+    <div class="snackbar">
+        <p>Searching...</p>
     </div>
 
     <script src="./index.js"></script>

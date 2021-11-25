@@ -9,10 +9,7 @@ textarea:focus, input:focus{
     outline: none;
 }
 
-
 body {
-    /* display: grid;
-    place-items: center; */
     height: 100vh;
     background-color: #202020;
     position: relative;
@@ -21,6 +18,13 @@ body {
 
 center {
     margin-top: 80px;
+}
+
+h2 {
+    font-size: 30px;
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .search_wrapper {
@@ -46,7 +50,6 @@ input {
     font-size: 15px;
     background-color: #121212;
     color: #FFFFFF;
-    /* margin: 0 50px; */
 }
 
 button {
@@ -61,6 +64,16 @@ button {
     border-radius: 2px;
     position: absolute;
     top: 50px;
+    transition: transform .2s;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+button:active {
+    background-color: #000000;
+    transform: translateY(10%);
 }
 
 .lists {
@@ -156,3 +169,22 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.snackbar {
+    visibility: hidden;
+    color: #FFFFFF;
+    max-width: 250px;
+    padding: 1px 100px;
+    border-radius: 1px;
+    text-align: center;
+    background-color: #4CB050;
+    position: fixed;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
+    box-shadow: 0 0 0 1px rgba(9, 9, 9, 0.1);
+}
+
+.snackbar.snackbar-enabled {
+    visibility: visible;
+}

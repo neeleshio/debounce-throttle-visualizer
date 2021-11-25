@@ -1,13 +1,21 @@
 const searchWrapper = document.querySelector(".search_wrapper")
 const inputBox = searchWrapper.querySelector("input")
+const searchBtn = document.querySelector(".search-btn")
 const lists = searchWrapper.querySelector(".lists")
 
 inputBox.onkeyup = (e) => {
-    doSomething(getData, 3000, e.target.value)()
+    debounce(getData, 3000, e.target.value)()
 }
 
+searchBtn.onclick = (e) => {
+    throttle(handleSearch, 3000)()
+}
+
+let timeoutHandle;
 let progress = 150
+let throttleProgress = 150
 let timeoutId;
+let intervalId;
 
 function getData(value) {
     if (value !== "") {
@@ -35,9 +43,14 @@ function getData(value) {
     }
 }
 
-let timeoutHandle;
+function handleSearch() {
+    document.querySelector(".snackbar").classList.add("snackbar-enabled")
+    setTimeout(() => {
+        document.querySelector(".snackbar").classList.remove("snackbar-enabled")
+    }, 500);
+}
 
-function doSomething(fn, delay, ...args) {
+function debounce(fn, delay, ...args) {
 
     return function () {
         if (timeoutHandle) {
@@ -59,6 +72,30 @@ function doSomething(fn, delay, ...args) {
         timeoutHandle = setTimeout(() => {
             fn(...args)
         }, delay)
+    }
+}
+
+let flag = true;
+
+function throttle(fn, delay) {
+    return function () {
+        if (flag) {
+            throttleProgress = 150
+            fn();
+
+            intervalId = setInterval(() => {
+                throttleProgress = throttleProgress - 0.5
+                document.querySelector(".throttle-bar").style.width = `${throttleProgress}px`
+                if (throttleProgress === 0) {
+                    clearInterval(intervalId)
+                }
+            }, 10);
+
+            flag = false
+            setTimeout(() => {
+                flag = true
+            }, delay);
+        }
     }
 }
 
